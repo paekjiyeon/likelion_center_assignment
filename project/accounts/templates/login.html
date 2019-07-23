@@ -1,4 +1,5 @@
-
+{% extends 'base.html' %}
+{% block content %}
 {% if error %}
 {{ error }}
 <br>
@@ -21,3 +22,10 @@ Password:
 <br>
 <input class="btn btn-primary" type="submit" value="Login">
 </form>
+{% comment %} <a href="{% provider_login_url 'google' %}">구글 로그인</a><br> {% endcomment %}
+<hr>
+    <a href="{% url 'social:begin' 'google-oauth2' %}">구글 로그인</a><br>
+    당신 로그인 해야댐
+
+
+{% endblock %}

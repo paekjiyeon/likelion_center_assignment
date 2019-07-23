@@ -40,6 +40,17 @@ INSTALLED_APPS = [
     'imagekit',
     'blog',
     'accounts',
+    'django.contrib.sites',
+    'social_django',
+
+	#allauth
+	'allauth',
+	'allauth.account',
+	'allauth.socialaccount',
+
+	#provider 구글 페이스북 카톡 깃허브 등 소셜로그인 제공업체
+	'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -65,6 +76,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends', #social 로그인 관련 template 추가부분
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -130,3 +143,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+AUTHENTICATION_BACKENDS = ( 
+#Needed to login by username in Django admin, regardless of 'allauth' 
+    'django.contrib.auth.backends.ModelBackend', # 'allauth' specific authentication methods, such as login by e-mail 
+    'allauth.account.auth_backends.AuthenticationBackend', 
+    'social_core.backends.open_id.OpenIdAuth',  #구글 로그인 처리를 위한 파이썬 클래스
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GooglePlusAuth',
+) 
+SITE_ID = 1 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '97064665595-eg64fjo7jtq8grcsddh0av7r7f5dbdfc.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'DVJYtaGbq2nE5SRPuv6Qc0ZX'
