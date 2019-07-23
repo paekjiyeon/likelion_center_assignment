@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load staticfiles %}
+<div class ="container">
+    <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <h4>제목: </h4>
+        <input type="text" name="title">
+        <br>
+        <br>
+        <h4>본문: </h4>
+        <textarea cols=40 rows=10 name="body"></textarea>
+        <br>
+        <br>
+        <p>사진</p>
+        <input type="file" name="image" accept="media/image/" id="id_image">
+        <br><br>
+        <input type="submit" value="제출하기" href = "{% url 'index' %}">
+    </form>
+</div>
+    <hr>
+<a href="{% url 'index' %}">뒤로가기</a>
+
+{% endblock %}
