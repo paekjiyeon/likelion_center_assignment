@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from . import api_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -157,5 +158,5 @@ SITE_ID = 1
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '97064665595-eg64fjo7jtq8grcsddh0av7r7f5dbdfc.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'DVJYtaGbq2nE5SRPuv6Qc0ZX'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = api_key.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = api_key.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET

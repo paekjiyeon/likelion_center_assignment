@@ -4,8 +4,8 @@
 ### venv ###
 *venv*/
 
-### django files ###
-*/resume_users/
+### key ###
+api_key.py
 
 ### Django ###
 *.log
