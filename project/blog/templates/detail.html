@@ -13,6 +13,23 @@
         <p>{{ blog.body }}</p>
         <a href="{% url 'modify' blog.id %}">수정하기</a>
         <a href="{% url 'delete' blog.id %}">삭제하기</a>
+        <hr>
+        {% for comment in blog.comments.all %}
+        <div class="comment">
+            <div class="date">{{comment.comment_date}}</div>
+            <p>{{ comment.comment_contents }}</p>
+            <a href="{% url 'comment_delete' comment_id=comment.id blog_id=blog.id%}">삭제</a>
+        </div>
+        {% empty %}
+        <p>댓글이 없슴둥</p>
+        {% endfor %}
+
+        <form action="{% url 'comment_write' blog_pk=blog.pk %}" method = 'POST'>
+            {% csrf_token %}
+            <input type="text" name="content" placeholder="댓글을 작성해주세요">
+            <input type ="submit" value="Write"/>
+        </form>
+        <hr>
         <a href="{% url 'index' %}">돌아가기</a>
     </div>
 {% endblock %}

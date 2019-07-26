@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 from .form import Blogform
-from .models import Blog
+from .models import Blog, Comment
 
 def index(request):
     blogs = Blog.objects
@@ -61,3 +62,19 @@ def delete(request, blog_id):
     blog = get_object_or_404(Blog, pk = blog_id)
     blog.delete()
     return redirect('index')
+
+def comment_write(request, blog_pk):
+    if request.method == 'POST':
+        blog = get_object_or_404(Blog, pk=blog_pk)
+        content = request.POST.get('content')
+        if not content:
+            messages.info(request, "You don't write anything...")
+            return redirect('/blog/' + str(blog_pk))
+        
+        Comment.objects.create(blog_key=blog, comment_contents=content)
+        return redirect('/blog/'+str(blog_pk))
+
+def comment_delete(request, comment_id, blog_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return redirect('/blog/'+str(blog_id))
