@@ -11,6 +11,30 @@
         <img src="{{ blog.image.url }}" weight = 100 height=200>
         {% endif %}
         <p>{{ blog.body }}</p>
+
+<!-- 네이버 지도 API -->
+{% comment %} <div id="map" style="width:100%;height:400px;"></div>
+
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(37.3595704, 127.105399),
+    zoom: 10
+};
+
+var map = new naver.maps.Map('map', mapOptions);
+</script> {% endcomment %}
+
+            <form action ="{% url 'blog_like' blog.id %}" method = "POST">
+                {% csrf_token %}
+                <button type="submit" value="Like">좋아요</button>
+            </form>
+
+
+            <p>좋아요 {{ blog.like_count }}개</p>
+            {% for like_user in blog.like_user_set.all %}
+                <p>{{ like_user.username }}</p>
+            {% endfor %}
+
         <a href="{% url 'modify' blog.id %}">수정하기</a>
         <a href="{% url 'delete' blog.id %}">삭제하기</a>
         <hr>

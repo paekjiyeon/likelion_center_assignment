@@ -11,5 +11,6 @@ urlpatterns = [
     path('modify/<int:post_id>', views.modify, name='modify'),
     path('comment_write/<int:blog_pk>/', views.comment_write, name='comment_write'),
     path('comment_delete/<int:blog_id>/<int:comment_id>',views.comment_delete, name="comment_delete"),
+    path('blog_like/<int:blog_id>/', views.blog_like, name="blog_like"),
     
 ]

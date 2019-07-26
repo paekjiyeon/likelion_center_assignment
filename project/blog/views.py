@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from .form import Blogform
 from .models import Blog, Comment
@@ -23,6 +25,7 @@ def detail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk=blog_id)
     return render(request, 'detail.html', {'blog': blog_detail})
 
+@login_required
 def new(request): 
     if request.method == 'POST':
         form = Blogform(request.POST, request.FILES)
@@ -78,3 +81,13 @@ def comment_delete(request, comment_id, blog_id):
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
     return redirect('/blog/'+str(blog_id))
+
+@login_required
+def blog_like(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+    blog_like, blog_like_created = blog.like_set.get_or_create(user=request.user)
+
+    if not blog_like_created:
+        blog_like.delete()
+        return redirect('/blog/'+str(blog.id))
+    return redirect('/blog/'+str(blog.id))
