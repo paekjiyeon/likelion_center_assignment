@@ -2,11 +2,13 @@
 {% block content %}
 
 {% load staticfiles %}
-<a href = "{% url 'new' %}">글쓰기</a>
+<br><br><br><br><br>
+
 <h1>index 페이지입니다!!!!!</h1>
 
 <img src="{% static '제목 없음.png'%}" width="300" height="200" alt="">
-
+<br>
+<a href = "{% url 'new' %}">글쓰기</a>
     {% for blog in blogs %}
         <div class = "container">
             <h1>{{ blog.title}} </h1>

@@ -1,10 +1,11 @@
-
+{% extends 'base.html' %}
+{% block content %}
 {% if error %}
 {{ error }}
 <br>
 <br>
 {% endif %}
-
+<br><br><br><br><br>
 <h1>Sign Up!</h1>
 
 <form method="POST" action="{% url 'signup'%}">
@@ -25,3 +26,4 @@ Confirm Password:
 <br>
 <input class="btn btn-primary" type="submit" value="Sign Up!">
 </form>
+{% endblock %}
