@@ -1,0 +1,15 @@
+.detail_box{
+    border:1px solid;
+    padding: 10px;
+    background-color: #fec8c9;
+    border-color: white;
+    border-radius: 0.5em;
+}
+
+hr{
+    height: 1px;
+    color: #444f59;
+    background-color: #444f59;
+    border: none;
+}
+

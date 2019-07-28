@@ -1,47 +1,56 @@
-.carousel-item {
-    height: 100vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-  
-  .lnr {
-    display: inline-block;
-    fill: currentColor;
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.05em;
-    stroke-width: 1;
-  }
-  
-  .services-icon {
-    margin-bottom: 20px;
-    font-size: 30px;
-  }
-  bgc2, .vLine, .hLine {
-      background-color: #0F52BA;
-  }
-  
-  .quote-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .services-icon {
-      font-size: 60px;
-      margin-left: 2rem;
-  }
 
+@font-face { 
+    font-family: 'Malssami815'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Malssami815.woff') 
+    format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+    }
 
-/* .social-part{
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); 
+    .notosanskr * 
+    { font-family: 'Noto Sans KR', sans-serif; }
+
+.navbar-light{
+    border: none;
+    background-color: #fd999a !important;
+}
+    
+    
+a.navbar-brand{
+    font-family: 'Malssami815'; 
+    text-align: center;
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+.nav-link{
+    font-size: 15px;
+    font-family: 'Noto Sans KR'
+}
+.social-part{
     padding-right:20px;
 }
 ul li a{
     margin-right: 20px;
+    font-family: 'Noto Sans KR'
+}
+
+hr{
+    color: #444f59;
+}
+/* 
+body{
+    margin-bottom: 120px;
+} */
+/* 
+.footer{
+    border : 4px solid #fec8c9;
+    position: static;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #fec8c9;
+
 } */

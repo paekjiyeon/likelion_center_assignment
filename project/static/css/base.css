@@ -1,0 +1,23 @@
+
+@font-face { 
+    font-family: 'Malssami815'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Malssami815.woff') 
+    format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+    }
+
+.navbar-brand{
+    font-family: 'Malssami815'; 
+}
+
+.social-part{
+    padding-right:20px;
+}
+ul li a{
+    margin-right: 20px;
+}
+
+body {
+    background-color : black;
+}

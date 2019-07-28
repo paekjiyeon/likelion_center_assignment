@@ -3,9 +3,10 @@
 
 {% load staticfiles %}
 <br><br><br><br><br>
-<h1>detail 페이지 임니둥~!!ㅎㅎ</h1>
-    
-    <div class="container jumbotron">
+<br><br>
+<link rel='stylesheet' type='text/css' href='{% static "css/detail.css"%}'>
+        
+    <div class="detail_box">
         <h1>{{ blog.title }}</h1>
         <p>{{ blog.pub_date }}</p>
         {% if blog.image %}
@@ -35,15 +36,18 @@ var map = new naver.maps.Map('map', mapOptions);
             {% for like_user in blog.like_user_set.all %}
                 <p>{{ like_user.username }}</p>
             {% endfor %}
-
-        <a href="{% url 'modify' blog.id %}">수정하기</a>
-        <a href="{% url 'delete' blog.id %}">삭제하기</a>
+        {% comment %} {% if blog.author == user %} {% endcomment %}
+        <a class="" href="{% url 'modify' blog.id %}">수정하기</a>
+        <a href="{% url 'delete' blog.id %}"  onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
+        {% comment %} {% endif %} {% endcomment %}
         <hr>
         {% for comment in blog.comments.all %}
         <div class="comment">
             <div class="date">{{comment.comment_date}}</div>
             <p>{{ comment.comment_contents }}</p>
+                    {% if comment.author == user %}
             <a href="{% url 'comment_delete' comment_id=comment.id blog_id=blog.id%}">삭제</a>
+                    {% endif %}
         </div>
         {% empty %}
         <p>댓글이 없슴둥</p>

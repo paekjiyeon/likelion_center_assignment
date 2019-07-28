@@ -13,7 +13,7 @@ def index(request):
     #블로그 모든 글들을 대상으로
     blog_list = Blog.objects.all()
     #블로그 객체 세 개를 한페이지로 자르기
-    paginator = Paginator(blog_list, 3)
+    paginator = Paginator(blog_list, 5)
     #request된 페이지가 뭔지를 알아내고 ( request페이지를 변수에 담아냄 )
     page = request.GET.get('page')
 	#request된 페이지를 얻어온 뒤 return 해 준다
@@ -23,8 +23,12 @@ def index(request):
 
 def detail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk=blog_id)
-    return render(request, 'detail.html', {'blog': blog_detail})
-
+    if request.user.is_authenticated:
+        user = User.objects.get(username = request.user.get_username())
+        return render(request, 'detail.html', {'blog':blog_detail, 'user':user})
+    else:
+        return render(request, 'detail.html', {'blog':blog_detail})
+        
 @login_required
 def new(request): 
     if request.method == 'POST':
