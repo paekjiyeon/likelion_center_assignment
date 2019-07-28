@@ -1,29 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<link rel='stylesheet' type='text/css' href='{% static "css/signup.css"%}'>
+    
 {% if error %}
 {{ error }}
 <br>
 <br>
 {% endif %}
 <br><br><br><br><br>
-<h1>Sign Up!</h1>
+<h1>회원가입</h1>
 
-<form method="POST" action="{% url 'signup'%}">
-
-{% csrf_token %}
-Username:
-<br>
-<input name="username" type="text" value="">
-<br>
-Password:
-<br>
-<input name="password1" type="password" value="">
-<br>
-Confirm Password:
-<br>
-<input name="password2" type="password" value="">
-<br>
-<br>
-<input class="btn btn-primary" type="submit" value="Sign Up!">
-</form>
+    <form method="POST" action="{% url 'signup'%}">
+        {% csrf_token %}
+        아이디(닉네임):
+        <br>
+        <input name="username" type="text" value="">
+        <br>
+        비밀번호:
+        <br>
+        <input name="password1" type="password" value="">
+        <br>
+        비밀번호 확인:
+        <br>
+        <input name="password2" type="password" value="">
+        <br>
+        <br>
+        <input class="btn btn-primary" type="submit" value="확인">
+    </form>
 {% endblock %}

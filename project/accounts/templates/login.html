@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<link rel='stylesheet' type='text/css' href='{% static "css/login.css"%}'>
 {% if error %}
 {{ error }}
 <br>
@@ -8,7 +10,7 @@
 <br><br><br><br><br>
 <br><br><br><br><br>
 
-<h1>Login</h1>
+<h1>LOGIN</h1>
 
 <form method="POST" action="{% url 'login'%}">
 
@@ -22,7 +24,7 @@ Password:
 <input name="password" type="password" value="">
 <br>
 <br>
-<input class="btn btn-primary" type="submit" value="Login">
+<input class="btn" type="submit" value="Login">
 </form>
 {% comment %} <a href="{% provider_login_url 'google' %}">구글 로그인</a><br> {% endcomment %}
 <hr>
