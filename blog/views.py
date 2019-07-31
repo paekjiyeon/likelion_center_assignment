@@ -17,9 +17,9 @@ def index(request):
     #request된 페이지가 뭔지를 알아내고 ( request페이지를 변수에 담아냄 )
     page = request.GET.get('page')
 	#request된 페이지를 얻어온 뒤 return 해 준다
-    blogs = paginator.get_page(page)
+    posts = paginator.get_page(page)
 
-    return render(request, 'index.html', {'blogs':blogs, 'blogs':blogs})
+    return render(request, 'index.html', {'blogs':blogs, 'posts':posts})
 
 def detail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk=blog_id)

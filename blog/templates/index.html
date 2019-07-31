@@ -6,13 +6,12 @@
 <link rel='stylesheet' type='text/css' href='{% static "css/index.css"%}'>
     
 <div class = "main_box">
-멈마 index 페이지 임둥ㅎ;;
 <img src="{% static '제목 없음.png'%}" width="300" height="200" alt="">
 </div>
 
 <br>
 <hr>
-    {% for blog in blogs %}
+    {% for blog in posts %}
         <div class = "container">
             <h1>{{ blog.title}} </h1>
             <p>{{ blog.pub_date }}</p>
@@ -24,18 +23,18 @@
         <hr>
     {% endfor %}
     
-    {% if blogs.has_previous %}
+    {% if posts.has_previous %}
     <a href="?page=1">첫번째</a>
-    <a href="?page={{blogs.previous_page_number}}">이전페이지</a>
+    <a href="?page={{posts.previous_page_number}}">이전페이지</a>
     {% endif %}
 
-    <span>{{blogs.number}}</span>
+    <span>{{posts.number}}</span>
     <span>/</span>
-    <span>{{blogs.paginator.num_pages}}</span>
+    <span>{{posts.paginator.num_pages}}</span>
 
-    {% if blogs.has_next %}
-    <a href="?page={{blogs.next_page_number}}">다음</a>
-    <a href="?page={{blogs.paginator.num_pages}}">마지막</a>
+    {% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">다음</a>
+    <a href="?page={{posts.paginator.num_pages}}">마지막</a>
     {% endif %}	
 
 {% endblock %}
