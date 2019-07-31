@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from . import api_key
+# from . import api_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -159,8 +159,8 @@ SITE_ID = 1
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = api_key.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = api_key.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = api_key.SOCIAL_AUTH_GOOGLE_OAUTH2_KEY
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = api_key.SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
